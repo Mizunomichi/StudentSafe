@@ -2,6 +2,17 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Login.css';
 
+// Admin credentials
+const ADMIN_CREDENTIALS = {
+  email: 'zildjiantrixterribo@gmail.com',
+  password: 'adminsizild'
+};
+
+// Simulated registered users database (in production, this would be on backend)
+const REGISTERED_USERS = [
+  { email: 'zildjiantrixterribo@gmail.com', password: 'adminsizild', username: 'Admin', role: 'admin' }
+];
+
 function Login() {
   const navigate = useNavigate();
   const [isLogin, setIsLogin] = useState(true);
@@ -13,6 +24,7 @@ function Login() {
   });
   const [errors, setErrors] = useState({});
   const [loading, setLoading] = useState(false);
+  const [authError, setAuthError] = useState('');
 
   const validateForm = () => {
     const newErrors = {};
@@ -50,17 +62,66 @@ function Login() {
     }
 
     setLoading(true);
+    setAuthError('');
 
-    // Simulate API call
-    setTimeout(() => {
+    try {
+      const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000/api';
+
+      if (isLogin) {
+        // LOGIN
+        const response = await fetch(`${API_URL}/auth/login`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            email: formData.email,
+            password: formData.password
+          })
+        });
+
+        const data = await response.json();
+
+        if (!response.ok) {
+          setAuthError(data.error || 'Login failed');
+          setLoading(false);
+          return;
+        }
+
+        // Successful login
+        localStorage.setItem('user', JSON.stringify(data.user));
+        navigate('/map');
+      } else {
+        // SIGN UP
+        const response = await fetch(`${API_URL}/auth/register`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            email: formData.email,
+            password: formData.password,
+            username: formData.username
+          })
+        });
+
+        const data = await response.json();
+
+        if (!response.ok) {
+          setAuthError(data.error || 'Registration failed');
+          setLoading(false);
+          return;
+        }
+
+        // Show success message - email verification required
+        setAuthError('');
+        alert('✅ Registration successful! Please check your email to verify your account before logging in.');
+        setIsLogin(true); // Switch to login mode
+        setFormData({ email: formData.email, password: '', username: '', confirmPassword: '' });
+      }
+      
       setLoading(false);
-      // Store user info in localStorage (demo purposes)
-      localStorage.setItem('user', JSON.stringify({
-        email: formData.email,
-        username: formData.username || formData.email.split('@')[0]
-      }));
-      navigate('/map');
-    }, 1500);
+    } catch (error) {
+      console.error('Auth error:', error);
+      setAuthError('Connection error. Please try again.');
+      setLoading(false);
+    }
   };
 
   const handleChange = (e) => {
@@ -74,6 +135,10 @@ function Login() {
         ...errors,
         [e.target.name]: ''
       });
+    }
+    // Clear auth error when user starts typing
+    if (authError) {
+      setAuthError('');
     }
   };
 
@@ -119,7 +184,14 @@ function Login() {
           <div className="login-box">
             <div className="login-header">
               <h2>{isLogin ? 'Welcome Back' : 'Create Account'}</h2>
-              <p>{isLogin ? 'Sign in to continue to StudentSafe' : 'Join us in making communities safer'}</p>
+              <authError && (
+                <div className="auth-error">
+                  <span className="error-icon">⚠️</span>
+                  {authError}
+                </div>
+              )}
+
+              {p>{isLogin ? 'Sign in to continue to StudentSafe' : 'Join us in making communities safer'}</p>
             </div>
 
             <form onSubmit={handleSubmit} className="login-form">
@@ -189,7 +261,7 @@ function Login() {
                     <input type="checkbox" />
                     <span>Remember me</span>
                   </label>
-                  <a href="#forgot" className="forgot-link">Forgot password?</a>
+                  <a href="/forgot-password" className="forgot-link">Forgot password?</a>
                 </div>
               )}
 
@@ -211,7 +283,8 @@ function Login() {
             </form>
 
             <div className="login-footer">
-              <p>
+              <p>  setAuthError('');
+                  
                 {isLogin ? "Don't have an account? " : "Already have an account? "}
                 <button 
                   className="toggle-mode" 

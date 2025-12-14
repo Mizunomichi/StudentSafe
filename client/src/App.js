@@ -4,6 +4,9 @@ import './App.css';
 import Home from './pages/Home';
 import Login from './pages/Login';
 import MapPage from './pages/MapPage';
+import VerifyEmail from './pages/VerifyEmail';
+import ResetPassword from './pages/ResetPassword';
+import ForgotPassword from './pages/ForgotPassword';
 
 function App() {
   return (
@@ -12,6 +15,9 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/map" element={<MapPage />} />
+        <Route path="/verify" element={<VerifyEmail />} />
+        <Route path="/reset-password" element={<ResetPassword />} />
+        <Route path="/forgot-password" element={<ForgotPassword />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </Router>
