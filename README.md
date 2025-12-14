@@ -321,7 +321,7 @@ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
 
 - **Issues**: [GitHub Issues](https://github.com/Mizunomichi/StudentSafe/issues)
 - **Discussions**: [GitHub Discussions](https://github.com/Mizunomichi/StudentSafe/discussions)
-- **Email**: your.email@example.com
+- **Email**: mizunomichi@gmail.com
 
 ---
 
