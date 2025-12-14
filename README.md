@@ -1,4 +1,4 @@
-# 🛡️ StudentSafe
+# 🛡️ StudentSafe Version 1.1
 
 <div align="center">
 
@@ -55,30 +55,6 @@ StudentSafe is a community-driven safety application that empowers students to r
 - **Guest access**: Quick access for immediate reporting
 - **Community validation**: See patterns of multiple reports in areas
 - **Real-time updates**: Latest incidents appear instantly
-
----
-
-## 📸 Screenshots
-
-> **Note**: Add your screenshots here once deployed
-
-```markdown
-<!-- Example structure:
-![Home Page](./screenshots/home.png)
-![Map View](./screenshots/map.png)
-![Report Incident](./screenshots/report.png)
--->
-```
-
----
-
-## 🚀 Demo
-
-> **Live Demo**: [Coming Soon]
-
-<!-- Once deployed, add your demo link here:
-🌐 **Try it live**: [https://studentsafe.example.com](https://studentsafe.example.com)
--->
 
 ---
 
@@ -195,135 +171,7 @@ Client runs on: `http://localhost:3000`
 - **Pan**: Click and drag the map
 - **Tooltips**: Hover over markers for quick info
 - **Popups**: Click markers for detailed information
-
-### For Developers
-
-#### Project Structure
-```
-StudentSafe/
-├── client/                # React frontend
-│   ├── public/           # Static assets
-│   └── src/
-│       ├── components/   # React components (Map, IncidentList, etc.)
-│       ├── pages/        # Page components (Home, MapPage, etc.)
-│       └── App.js        # Main app component
-├── server/               # Express backend
-│   ├── index.js         # Server entry point
-│   └── routes/          # API routes (if organized)
-├── package.json         # Backend dependencies
-└── README.md           # This file
-```
-
-#### Environment Variables
-
-Create a `.env` file in the root directory for backend configuration:
-```env
-PORT=5000
-NODE_ENV=development
-```
-
-Create a `.env` file in the `client` directory for frontend configuration:
-```env
-REACT_APP_API_URL=http://localhost:5000/api
-```
-
----
-
-## 🔌 API Documentation
-
-### Base URL
-```
-http://localhost:5000/api
-```
-
-### Endpoints
-
-#### Health Check
-```http
-GET /health
-```
-Returns server status and uptime.
-
-**Response:**
-```json
-{
-  "status": "ok",
-  "timestamp": "2025-12-14T10:30:00.000Z"
-}
-```
-
-#### Get All Incidents
-```http
-GET /incidents
-```
-Retrieves all reported incidents.
-
-**Response:**
-```json
-[
-  {
-    "id": "1",
-    "latitude": 14.5995,
-    "longitude": 120.9842,
-    "type": "accident",
-    "severity": "high",
-    "description": "Car collision at intersection",
-    "timestamp": 1702468200000
-  }
-]
-```
-
-#### Get Recent Incidents
-```http
-GET /incidents/recent
-```
-Retrieves incidents from the last 24 hours.
-
-#### Get Incidents by Type
-```http
-GET /incidents/type/:type
-```
-
-**Parameters:**
-- `type` (string): accident | crime | hazard | suspicious | other
-
-#### Report New Incident
-```http
-POST /incidents
-```
-
-**Request Body:**
-```json
-{
-  "latitude": 14.5995,
-  "longitude": 120.9842,
-  "type": "accident",
-  "severity": "high",
-  "description": "Car collision at intersection"
-}
-```
-
-**Response:**
-```json
-{
-  "id": "1",
-  "latitude": 14.5995,
-  "longitude": 120.9842,
-  "type": "accident",
-  "severity": "high",
-  "description": "Car collision at intersection",
-  "timestamp": 1702468200000
-}
-```
-
-#### Delete Incident (Admin)
-```http
-DELETE /incidents/:id
-```
-
-**Parameters:**
-- `id` (string): Incident ID to delete
-
+- 
 ---
 
 ## 🎨 Incident Types & Severity
@@ -455,7 +303,7 @@ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
 
 ## 👥 Authors
 
-- **Your Name** - *Initial work* - [Mizunomichig](https://github.com/Mizunomichi)
+- **Mizu** - *Initial work* - [Mizunomichi](https://github.com/Mizunomichi)
 
 ---
 
