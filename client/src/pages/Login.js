@@ -184,14 +184,14 @@ function Login() {
           <div className="login-box">
             <div className="login-header">
               <h2>{isLogin ? 'Welcome Back' : 'Create Account'}</h2>
-              <authError && (
+              {authError && (
                 <div className="auth-error">
                   <span className="error-icon">⚠️</span>
                   {authError}
                 </div>
               )}
 
-              {p>{isLogin ? 'Sign in to continue to StudentSafe' : 'Join us in making communities safer'}</p>
+              <p>{isLogin ? 'Sign in to continue to StudentSafe' : 'Join us in making communities safer'}</p>
             </div>
 
             <form onSubmit={handleSubmit} className="login-form">
