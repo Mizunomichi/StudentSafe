@@ -18,18 +18,6 @@ app.use(cors({
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-// Serve static files from React build
-app.use(express.static(path.join(__dirname, '../client/build')));
-
-// Error handling middleware
-app.use((err, req, res, next) => {
-  console.error(err.stack);
-  res.status(500).json({ 
-    error: 'Something went wrong!',
-    message: err.message 
-  });
-});
-
 // In-memory storage (replace with database later)
 let incidents = [];
 let incidentIdCounter = 1;
@@ -333,9 +321,21 @@ app.post('/api/auth/resend-verification', async (req, res) => {
   }
 });
 
+// Serve static files from React build (CSS, JS, images, etc.)
+app.use(express.static(path.join(__dirname, '../client/build')));
+
 // Serve React app for all other routes (must be after API routes)
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, '../client/build', 'index.html'));
+});
+
+// Error handling middleware
+app.use((err, req, res, next) => {
+  console.error(err.stack);
+  res.status(500).json({ 
+    error: 'Something went wrong!',
+    message: err.message 
+  });
 });
 
 // Start server
