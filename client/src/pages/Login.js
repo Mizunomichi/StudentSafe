@@ -120,7 +120,7 @@ function Login() {
       setLoading(false);
     } catch (error) {
       console.error('Auth error:', error);
-      setAuthError('Connection error. Please try again.');
+      setAuthError(`Connection error: ${error.message}. Please check if the server is running.`);
       setLoading(false);
     }
   };
