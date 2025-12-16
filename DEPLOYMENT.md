@@ -47,9 +47,9 @@ Your app is now installable! Users can:
 
 ---
 
-### Step 2: Deploy Frontend to Vercel
+### Step 2: Deploy Frontend to Netlify
 
-1. **Go to [vercel.com](https://vercel.com)** and sign in with GitHub
+1. **Go to [netlify.com](https://netlify.com)** and sign in with GitHub
 
 2. **Import Project**
    - Click "Add New..." → "Project"
@@ -75,7 +75,7 @@ Your app is now installable! Users can:
 5. **Deploy!**
    - Click "Deploy"
    - Wait for build (2-3 minutes)
-   - Your app is live! Copy the URL: `https://studentsafe-xyz.vercel.app`
+   - Your app is live! Copy the URL: `https://studentsafe.netlify.app`
 
 ---
 
@@ -84,9 +84,9 @@ Your app is now installable! Users can:
 1. **Go back to Render dashboard**
 2. **Update Environment Variables:**
    ```
-   FRONTEND_URL = https://studentsafe-xyz.vercel.app
+   FRONTEND_URL = https://studentsafe.netlify.app
    ```
-   (Use YOUR actual Vercel URL)
+   (Use YOUR actual Netlify URL)
 
 3. **Redeploy backend** (Render will auto-redeploy when you save env vars)
 
@@ -94,7 +94,7 @@ Your app is now installable! Users can:
 
 ### Step 4: Test Your Deployed App! 🎉
 
-1. **Open your Vercel URL** in any browser
+1. **Open your Netlify URL** in any browser
 2. **Test on your phone:**
    - Open the URL on your phone
    - Tap menu → "Add to Home Screen"
@@ -105,7 +105,7 @@ Your app is now installable! Users can:
 ## 📱 Accessing on Your Phone
 
 ### Method 1: Direct Browser Access
-Just open your Vercel URL: `https://studentsafe-xyz.vercel.app`
+Just open your Netlify URL: `https://studentsafe.netlify.app`
 
 ### Method 2: Install as PWA (Recommended)
 **iPhone:**
@@ -133,7 +133,7 @@ git add .
 git commit -m "Your update message"
 git push
 
-# Both Vercel and Render will auto-deploy! 🚀
+# Both Netlify and Render will auto-deploy! 🚀
 ```
 
 ---
@@ -145,7 +145,7 @@ git push
 - ⚠️ Server sleeps after 15 min of inactivity (first request takes ~30 seconds)
 - 750 hours/month
 
-**Vercel (Frontend):**
+**Netlify (Frontend):**
 - ✅ Free forever for personal projects
 - 100GB bandwidth/month
 - Unlimited projects
@@ -157,7 +157,7 @@ git push
 After deployment, update these in your README:
 
 ```markdown
-🌐 **Live Demo**: https://studentsafe-xyz.vercel.app
+🌐 **Live Demo**: https://studentsafe.netlify.app
 📡 **API**: https://studentsafe-api.onrender.com/api
 ```
 
@@ -167,21 +167,21 @@ After deployment, update these in your README:
 
 **Backend not connecting?**
 - Check CORS settings in Render env vars
-- Verify API URL in Vercel env vars
+- Verify API URL in Netlify env vars
 - Check Render logs for errors
 
 **PWA not installing?**
-- Make sure you're using HTTPS (Vercel provides this)
+- Make sure you're using HTTPS (Netlify provides this)
 - Check browser compatibility
 - Verify manifest.json is loading
 
 **Frontend shows errors?**
 - Check browser console (F12)
-- Verify environment variables in Vercel
+- Verify environment variables in Netlify
 - Check if backend is awake (visit API health endpoint)
 
 ---
 
-**Need help?** Check Render and Vercel docs or open an issue on GitHub!
+**Need help?** Check Render and Netlify docs or open an issue on GitHub!
 
 🎉 **Congratulations! Your app is now live and installable!**

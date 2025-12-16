@@ -262,7 +262,7 @@ Manual testing checklist:
 
 ### Frontend
 - Build: `cd client && npm run build`
-- Deploy to: Vercel, Netlify, GitHub Pages
+- Deploy to: Netlify (frontend), Render (backend)
 - Set API URL environment variable
 
 ### Backend

@@ -95,12 +95,12 @@ Sent immediately when user signs up:
 
 ## 🚀 Production Deployment
 
-For production on Render/Vercel, add these environment variables in your Render dashboard:
+For production on Render/Netlify, add these environment variables in your Render dashboard:
 
 ```
 EMAIL_USER=your-email@gmail.com
 EMAIL_PASSWORD=your-app-password
-FRONTEND_URL=https://your-app.vercel.app
+FRONTEND_URL=https://your-app.netlify.app
 ```
 
 ---
