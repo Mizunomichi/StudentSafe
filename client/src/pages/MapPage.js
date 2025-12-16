@@ -6,7 +6,7 @@ import ReportForm from '../components/ReportForm';
 import IncidentList from '../components/IncidentList';
 import axios from 'axios';
 
-const API_URL = 'http://localhost:5000/api';
+const API_URL = process.env.REACT_APP_API_URL || '/api';
 
 function MapPage() {
   const navigate = useNavigate();

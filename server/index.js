@@ -1,6 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
+const path = require('path');
 const { sendEmail, emailTemplates, generateToken } = require('./emailService');
 require('dotenv').config();
 
@@ -14,6 +15,9 @@ app.use(cors({
 }));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+
+// Serve static files from React build
+app.use(express.static(path.join(__dirname, '../client/build')));
 
 // Error handling middleware
 app.use((err, req, res, next) => {
@@ -327,14 +331,14 @@ app.post('/api/auth/resend-verification', async (req, res) => {
   }
 });
 
-// 404 handler
-app.use((req, res) => {
-  res.status(404).json({ error: 'Route not found' });
+// Serve React app for all other routes (must be after API routes)
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../client/build', 'index.html'));
 });
 
 // Start server
 app.listen(PORT, '0.0.0.0', () => {
   console.log(`StudentSafe server running on port ${PORT}`);
   console.log(`API Health: http://localhost:${PORT}/api/health`);
-  console.log(`API Health: http://localhost:${PORT}/api/health`);
+  console.log(`Frontend: Serving React app from /client/build`);
 });

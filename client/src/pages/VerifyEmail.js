@@ -19,7 +19,7 @@ function VerifyEmail() {
       }
 
       try {
-        const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000/api';
+        const API_URL = process.env.REACT_APP_API_URL || '/api';
         const response = await fetch(`${API_URL}/auth/verify/${token}`);
         const data = await response.json();
 
